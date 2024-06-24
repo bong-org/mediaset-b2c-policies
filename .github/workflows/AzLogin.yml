@@ -11,9 +11,9 @@ permissions:
 
 #These environment variables are used by the terraform azure provider to setup OIDD authenticate. 
 env:
-  ARM_CLIENT_ID: "${{ secrets.AZURE_CLIENT_ID }}"
-  ARM_CLIENT_SECRET: "${{ secrets.AZURE_CLIENT_SECRET }}"
-  ARM_TENANT_ID: "${{ secrets.AZURE_TENANT_ID }}"
+  clientId: "${{ secrets.AZURE_CLIENT_ID }}"
+  clientSecret: "${{ secrets.AZURE_CLIENT_SECRET }}"
+  tenant: "${{ secrets.AZURE_TENANT_ID }}"
   
 jobs:
     build-and-deploy:
@@ -26,7 +26,7 @@ jobs:
           with:
             folder: "./Config"
             files: "b2ccluaitlab.onmicrosoft.com-B2C_1A_BASIC_A_BASE_MEDIASET_TEST_PUBLISH.xml"
-            ARM_TENANT_ID: "${{ secrets.AZURE_TENANT_ID }}"
-            ARM_CLIENT_ID: "${{ secrets.AZURE_CLIENT_ID }}"
-            ARM_CLIENT_SECRET: "${{ secrets.AZURE_CLIENT_SECRET }}"
+            tenant: "${{ secrets.AZURE_TENANT_ID }}"
+            clientId: "${{ secrets.AZURE_CLIENT_ID }}"
+            clientSecret: "${{ secrets.AZURE_CLIENT_SECRET }}"
     
