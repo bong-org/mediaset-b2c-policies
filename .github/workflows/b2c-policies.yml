@@ -1,4 +1,4 @@
-name: Azure Login with OpenID Connect in B2C 
+name: Azure upload b2c Policies 
 
 on:
   workflow_dispatch:
