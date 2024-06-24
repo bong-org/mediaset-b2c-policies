@@ -24,8 +24,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Set up PowerShell Core
-        uses: actions/setup-pwsh@v2
+      - name: Install PowerShell
+        run:  |
+          sudo apt-get update
+          sudo apt-get install -y powershell
 
       - name: Process XML files
         run: pwsh ./process_xml.ps1 -environment ${{ github.event.inputs.environment }} -jsonConfigPath ./Config/Prod/parameters.json -inputFolder ./Policies -outputFolder ./ProcessedPolicies
