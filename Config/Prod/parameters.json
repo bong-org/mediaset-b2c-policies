@@ -6,7 +6,7 @@
   },
 
   "test": {
-    "ENVIRONMENT": "Development",
+    "ENVIRONMENT": "Test",
     "TENANTID": "b2ccluaitlab.onmicrosoft.com",
     "Operation": "Write"
   }

@@ -5,8 +5,11 @@ on:
     inputs:
       environment:
         description: 'Environment'
-        required: true
-        default: 'prod'
+        type: choice
+        options:
+          - dev
+          - test
+          - prod
 
 permissions:
   id-token: write
