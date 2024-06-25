@@ -1,6 +1,13 @@
 {
-    "prod": {
-      "ENVIRONMENT": "Production",
-      "TENANTID": "b2ccluaitlab.onmicrosoft.com"
-    }
+  "prod": {
+    "ENVIRONMENT": "Production",
+    "TENANTID": "b2ccluaitlab.onmicrosoft.com",
+    "Operation": "Read"
+  },
+
+  "test": {
+    "ENVIRONMENT": "Development",
+    "TENANTID": "b2ccluaitlab.onmicrosoft.com",
+    "Operation": "Write"
   }
+}

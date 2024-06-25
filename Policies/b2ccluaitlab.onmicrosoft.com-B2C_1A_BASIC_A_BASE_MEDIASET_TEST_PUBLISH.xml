@@ -432,7 +432,7 @@
         </TechnicalProfile>
         <TechnicalProfile Id="AAD-UserReadUsingEmailAddress">
           <Metadata>
-            <Item Key="Operation">Read</Item>
+            <Item Key="Operation">{{ Operation }}</Item>
             <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
             <Item Key="UserMessageIfClaimsPrincipalDoesNotExist">An account could not be found for the provided user ID.</Item>
           </Metadata>
