@@ -13,6 +13,12 @@ if (-Not (Test-Path $outputFolder)) {
 $configs = Get-Content -Path $jsonConfigPath | ConvertFrom-Json
 $replacements = $configs.$environment
 
+# Converti PSCustomObject in Hashtable
+$replacementHashtable = @{}
+$replacements.psobject.Properties | ForEach-Object {
+    $replacementHashtable[$_.Name] = $_.Value
+}
+
 # Funzione per sostituire i placeholder nei file XML
 function Replace-Placeholders {
     param (
@@ -29,7 +35,8 @@ function Replace-Placeholders {
 # Processa ogni file XML nella cartella di input
 Get-ChildItem -Path $inputFolder -Filter *.xml | ForEach-Object {
     $content = Get-Content -Path $_.FullName -Raw
-    $updatedContent = Replace-Placeholders -content $content -replacements $replacements
+    $updatedContent = Replace-Placeholders -content $content -replacements $replacementHashtable
     $outputPath = Join-Path -Path $outputFolder -ChildPath $_.Name
     Set-Content -Path $outputPath -Value $updatedContent
 }
+
