@@ -1,4 +1,4 @@
-<TrustFrameworkPolicy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06" PolicySchemaVersion="0.3.0.0" TenantId="{{ TENANTID }}" PolicyId="B2C_1A_BASIC_A_BASE_MEDIASET_TEST_PUBLISH_1" PublicPolicyUri="http://b2ccluaitlab.onmicrosoft.com/B2C_1A_BASIC_A_BASE_MEDIASET_TEST_PUBLISH" TenantObjectId="8be011bd-eba0-4efa-bfb6-7d14e0449b9f">
+<TrustFrameworkPolicy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06" PolicySchemaVersion="0.3.0.0" TenantId="{{ TENANTID }}" PolicyId="B2C_1A_BASIC_A_BASE_MEDIASET_TEST_PUBLISH_1" PublicPolicyUri="http://b2ccluaitlab.onmicrosoft.com/B2C_1A_BASIC_A_BASE_MEDIASET_TEST_PUBLISH_1" TenantObjectId="8be011bd-eba0-4efa-bfb6-7d14e0449b9f">
   <!-- FROM starterpack LocalAccount, Base-XML for B2C_1A_signup_signin -->
   <BuildingBlocks>
     <ClaimsSchema>
