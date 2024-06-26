@@ -28,19 +28,14 @@ jobs:
           sudo apt-get install -y powershell
 
       - name: Process XML files
-        run: pwsh ./process_xml.ps1 -environment ${{ github.event.inputs.environment }} -jsonConfigPath ./Config/parameters.json -inputFolder ./Policies
+        run: pwsh ./process_xml.ps1 -environment ${{ github.event.inputs.environment }} -jsonConfigPath ./Config/parameters.json -inputFolder ./Policies -outputFolder ./Config/${{ github.event.inputs.environment }}
 
-      - name: Upload processed XML files as artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: processed-xml-files
-          path: ./Config/${{ github.event.inputs.environment }}
 
       - name: 'Upload b2c Test Policy'
         uses: azure-ad-b2c/deploy-trustframework-policy@v3
         with:
           folder: "./Config/${{ github.event.inputs.environment }}"
-          files: "b2ccluaitlab.onmicrosoft.com-B2C_1A_BASIC_A_BASE_MEDIASET_TEST_PUBLISH.xml"
+          files: "b2ccluaitlab.onmicrosoft.com-B2C_1A_BASIC_A_BASE_MEDIASET_TEST_PUBLISH_1.xml,b2ccluaitlab.onmicrosoft.com-B2C_1A_BASIC_A_BASE_MEDIASET_TEST_PUBLISH_2.xml,b2ccluaitlab.onmicrosoft.com-B2C_1A_BASIC_A_BASE_MEDIASET_TEST_PUBLISH_3.xml"
           tenant: "${{ secrets.AZURE_TENANT_ID }}"
           clientId: "${{ secrets.AZURE_CLIENT_ID }}"
           clientSecret: "${{ secrets.AZURE_CLIENT_SECRET }}"
