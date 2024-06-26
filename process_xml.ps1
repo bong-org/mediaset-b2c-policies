@@ -1,12 +1,18 @@
+# Definizione dei parametri
 param (
     [string]$environment,
     [string]$jsonConfigPath,
     [string]$inputFolder,
-    [string]$outputFolder
+    [string]$outputFolder,
+    [string]$outputBaseFolder = './Config'
 )
 
+# Determina la cartella di output basata sull'ambiente
+$outputFolder = Join-Path -Path $outputBaseFolder -ChildPath $environment
+
+# Crea la cartella di output se non esiste
 if (-Not (Test-Path $outputFolder)) {
-    New-Item -ItemType Directory -Path $outputFolder
+    New-Item -ItemType Directory -Path $outputFolder -Force
 }
 
 # Leggi il file JSON con le configurazioni degli ambienti

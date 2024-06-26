@@ -403,7 +403,7 @@
         <!-- Technical profiles for local accounts -->
         <TechnicalProfile Id="AAD-UserWriteUsingLogonEmail">
           <Metadata>
-            <Item Key="Operation">Write</Item>
+            <Item Key="Operation">{{ Operation }}</Item>
             <Item Key="RaiseErrorIfClaimsPrincipalAlreadyExists">true</Item>
           </Metadata>
           <IncludeInSso>false</IncludeInSso>
@@ -458,7 +458,7 @@
         </TechnicalProfile>
         <TechnicalProfile Id="AAD-UserWritePasswordUsingObjectId">
           <Metadata>
-            <Item Key="Operation">Write</Item>
+            <Item Key="Operation">{{ Operation }}</Item>
             <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
           </Metadata>
           <IncludeInSso>false</IncludeInSso>
@@ -474,7 +474,7 @@
         <!-- Technical profiles for updating user record using objectId -->
         <TechnicalProfile Id="AAD-UserWriteProfileUsingObjectId">
           <Metadata>
-            <Item Key="Operation">Write</Item>
+            <Item Key="Operation">{{ Operation }}</Item>
             <Item Key="RaiseErrorIfClaimsPrincipalAlreadyExists">false</Item>
             <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
           </Metadata>
@@ -494,7 +494,7 @@
         <!-- The following technical profile is used to read data after user authenticates. -->
         <TechnicalProfile Id="AAD-UserReadUsingObjectId">
           <Metadata>
-            <Item Key="Operation">Read</Item>
+            <Item Key="Operation">{{ Operation }}</Item>
             <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
           </Metadata>
           <IncludeInSso>false</IncludeInSso>
