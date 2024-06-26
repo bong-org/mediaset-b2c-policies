@@ -15,6 +15,11 @@ permissions:
   id-token: write
   contents: read
   pull-requests: write
+
+env:
+  clientId: "${{ secrets.AZURE_CLIENT_ID }}"
+  clientSecret: "${{ secrets.AZURE_CLIENT_SECRET }}"
+  tenant: "${{ secrets.AZURE_TENANT_ID }}"
   
 jobs:
   build-and-deploy:
