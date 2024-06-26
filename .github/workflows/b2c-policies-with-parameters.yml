@@ -28,7 +28,13 @@ jobs:
           sudo apt-get install -y powershell
 
       - name: Process XML files
-        run: pwsh ./process_xml.ps1 -environment ${{ github.event.inputs.environment }} -jsonConfigPath ./Config/parameters.json -inputFolder ./Policies -outputFolder "./Config/${{ github.event.inputs.environment }}"
+        run: pwsh ./process_xml.ps1 -environment ${{ github.event.inputs.environment }} -jsonConfigPath ./Config/parameters.json -inputFolder ./Policies
+
+      - name: Upload processed XML files as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: processed-xml-files
+          path: ./Config/${{ github.event.inputs.environment }}
 
       - name: 'Upload b2c Test Policy'
         uses: azure-ad-b2c/deploy-trustframework-policy@v3
