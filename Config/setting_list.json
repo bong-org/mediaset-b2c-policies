@@ -1,0 +1,43 @@
+{
+    "dev": {
+        "Tenant": "Insert Tenant",
+        "IdentityExperienceFrameworkAppId": "Identity ex fra",
+        "ProxyIdentityExperienceFrameworkAppId": "proxy ex fra",
+        "CustomPagesStorageBaseUrl": "Custom page",
+        "MailerSenderServerGetToken":  "API Get Token",
+        "MailerSenderServer": "API Call",
+        "B2BFederationAppId": "App ID",
+        "ExtensionAppID": "",
+        "ExtensionAppObjID": "" ,
+        "AppInsightsKey": "",
+        "Project": "_projectx" 
+    },
+
+    "test": {
+        "Tenant": "Insert Tenant",
+        "IdentityExperienceFrameworkAppId": "Identity ex fra",
+        "ProxyIdentityExperienceFrameworkAppId": "proxy ex fra",
+        "CustomPagesStorageBaseUrl": "Custom page",
+        "MailerSenderServerGetToken":  "API Get Token",
+        "MailerSenderServer": "API Call",
+        "B2BFederationAppId": "App ID",
+        "ExtensionAppID": "",
+        "ExtensionAppObjID": "" ,
+        "AppInsightsKey": "",
+        "Project": "_projectx" 
+    },
+
+    "prod": {
+        "Tenant": "Insert Tenant",
+        "IdentityExperienceFrameworkAppId": "Identity ex fra",
+        "ProxyIdentityExperienceFrameworkAppId": "proxy ex fra",
+        "CustomPagesStorageBaseUrl": "Custom page",
+        "MailerSenderServerGetToken":  "API Get Token",
+        "MailerSenderServer": "API Call",
+        "B2BFederationAppId": "App ID",
+        "ExtensionAppID": "",
+        "ExtensionAppObjID": "" ,
+        "AppInsightsKey": "",
+        "Project": "_projectx" 
+    }
+}
