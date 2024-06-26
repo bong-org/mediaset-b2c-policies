@@ -1,4 +1,3 @@
-# Definizione dei parametri
 param (
     [string]$environment,
     [string]$jsonConfigPath,
@@ -6,7 +5,6 @@ param (
     [string]$outputFolder
 )
 
-# Crea la cartella di output se non esiste
 if (-Not (Test-Path $outputFolder)) {
     New-Item -ItemType Directory -Path $outputFolder
 }
@@ -41,4 +39,3 @@ Get-ChildItem -Path $inputFolder -Filter *.xml | ForEach-Object {
     $outputPath = Join-Path -Path $outputFolder -ChildPath $_.Name
     Set-Content -Path $outputPath -Value $updatedContent
 }
-
