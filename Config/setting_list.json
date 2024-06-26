@@ -14,7 +14,7 @@
     },
 
     "test": {
-        "Tenant": "InsertTenant",
+        "Tenant": "b2ccluaitlab.onmicrosoft.com",
         "IdentityExperienceFrameworkAppId": "Identity ex fra",
         "ProxyIdentityExperienceFrameworkAppId": "proxy ex fra",
         "CustomPagesStorageBaseUrl": "Custom page",
