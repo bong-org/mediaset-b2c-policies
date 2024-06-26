@@ -14,7 +14,7 @@
     },
 
     "test": {
-        "Tenant": "Insert Tenant",
+        "Tenant": "InsertTenant",
         "IdentityExperienceFrameworkAppId": "Identity ex fra",
         "ProxyIdentityExperienceFrameworkAppId": "proxy ex fra",
         "CustomPagesStorageBaseUrl": "Custom page",
