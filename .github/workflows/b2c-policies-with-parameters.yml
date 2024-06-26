@@ -39,7 +39,7 @@ jobs:
       - name: 'Upload b2c Test Policy'
         uses: azure-ad-b2c/deploy-trustframework-policy@v3
         with:
-          folder: "./ProcessedPolicies"
+          folder: "./Policies"
           files: "b2ccluaitlab.onmicrosoft.com-B2C_1A_BASIC_A_BASE_MEDIASET_TEST_PUBLISH_1.xml,b2ccluaitlab.onmicrosoft.com-B2C_1A_BASIC_A_BASE_MEDIASET_TEST_PUBLISH_2.xml,b2ccluaitlab.onmicrosoft.com-B2C_1A_BASIC_A_BASE_MEDIASET_TEST_PUBLISH_3.xml"
           tenant: "${{ secrets.AZURE_TENANT_ID }}"
           clientId: "${{ secrets.AZURE_CLIENT_ID }}"
