@@ -3,31 +3,4 @@
     <TenantId>{{ Tenant }}</TenantId>
     <PolicyId>B2C_1A_Mediaset{{ Project }}_TrustFrameworkExtensions</PolicyId>
   </BasePolicy>
-  <RelyingParty>
-    <DefaultUserJourney ReferenceId="SignUp" />
-    <Endpoints>
-      <!--points to refresh token journey when app makes refresh token request-->
-      <Endpoint Id="Token" UserJourneyReferenceId="RedeemRefreshToken" />
-    </Endpoints>
-    <UserJourneyBehaviors>
-      <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{{ AppInsightsKey }}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
-      <ScriptExecution>Allow</ScriptExecution>
-    </UserJourneyBehaviors>
-    <TechnicalProfile Id="PolicyProfile">
-      <DisplayName>PolicyProfile</DisplayName>
-      <Protocol Name="OpenIdConnect" />
-      <OutputClaims>
-        <OutputClaim ClaimTypeReferenceId="displayName" />
-        <OutputClaim ClaimTypeReferenceId="givenName" />
-        <OutputClaim ClaimTypeReferenceId="surname" />
-        <OutputClaim ClaimTypeReferenceId="email" />
-        <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub" />
-        <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
-        <OutputClaim ClaimTypeReferenceId="extension_reviewer" />
-        <OutputClaim ClaimTypeReferenceId="extension_companyName" />
-        <OutputClaim ClaimTypeReferenceId="mobile" />
-      </OutputClaims>
-      <SubjectNamingInfo ClaimType="sub" />
-    </TechnicalProfile>
-  </RelyingParty>
 </TrustFrameworkPolicy>
