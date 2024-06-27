@@ -34,7 +34,7 @@ jobs:
           sudo apt-get install -y powershell
 
       - name: Process XML files
-        run: pwsh ./process_xml.ps1 -environment ${{ github.event.inputs.environment }} -jsonConfigPath ./Config/parameters.json -inputFolder ./Policies -outputFolder ./ProcessedPolicies
+        run: pwsh ./process_xml.ps1 -environment ${{ github.event.inputs.environment }} -jsonConfigPath ./Config/parameters.json -inputFolder ./Policies -outputFolder ./CompileFiles
 
 
 
