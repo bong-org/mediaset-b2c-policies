@@ -1,11 +1,11 @@
 {
-  "production": {
+  "test": {
     "ENVIRONMENT": "Production",
     "TENANTID": "b2ccluaitlab.onmicrosoft.com",
     "Operation": "Read"
   },
 
-  "test": {
+  "production": {
     "ENVIRONMENT": "Test",
     "TENANTID": "b2ccluaitlab.onmicrosoft.com",
     "Operation": "Write",
