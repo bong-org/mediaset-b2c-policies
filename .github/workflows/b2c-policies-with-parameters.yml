@@ -45,7 +45,7 @@ jobs:
       - name: Download processed XML files
         uses: actions/download-artifact@v3
         with:
-          name: Processed-xml-files-${{ github.event.inputs.environment }}
+          name: processed-xml-files-${{ github.event.inputs.environment }}
           path: ./DownloadedFiles
 
       - name: Test artifact download
