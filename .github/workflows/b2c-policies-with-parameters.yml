@@ -35,14 +35,20 @@ jobs:
       - name: Process XML files
         run: pwsh ./process_xml.ps1 -environment ${{ github.event.inputs.environment }} -jsonConfigPath ./Config/parameters.json -inputFolder ./Policies -outputFolder ./ProcessedPolicies
 
-      - name: Request manual approval before upload
-        uses: fjogeleit/manual-approval-action@v1
-        with:
-          approvers: '["c-bongiorno"]'
+      - name: Request manual approval
+        run: |
+          echo "Please trigger the 'Request Approval' workflow for environment '${{ github.event.inputs.environment }}' and then approve it to proceed."
 
-      
+  wait-for-approval:
+    needs: build-and-deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for manual approval
+        run: echo "Waiting for manual approval..."
+        timeout-minutes: 30
+        continue-on-error: true
+
       - name: 'Upload b2c Test Policy'
-        if: ${{ success() }}
         uses: azure-ad-b2c/deploy-trustframework-policy@v3
         with:
           folder: "./ProcessedPolicies"
