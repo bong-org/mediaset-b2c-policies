@@ -8,6 +8,8 @@
   "test": {
     "ENVIRONMENT": "Test",
     "TENANTID": "b2ccluaitlab.onmicrosoft.com",
-    "Operation": "Write"
+    "Operation": "Write",
+    "IdSocial": ""
+
   }
 }
