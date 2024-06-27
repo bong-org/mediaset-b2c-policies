@@ -35,7 +35,14 @@ jobs:
       - name: Process XML files
         run: pwsh ./process_xml.ps1 -environment ${{ github.event.inputs.environment }} -jsonConfigPath ./Config/parameters.json -inputFolder ./Policies -outputFolder ./ProcessedPolicies
 
+      - name: Request manual approval before upload
+        uses: fjogeleit/manual-approval-action@v1
+        with:
+          approvers: '["c-bongiorno"]'
+
+      
       - name: 'Upload b2c Test Policy'
+        if: ${{ success() }}
         uses: azure-ad-b2c/deploy-trustframework-policy@v3
         with:
           folder: "./ProcessedPolicies"
