@@ -39,7 +39,7 @@ jobs:
       - name: Upload processed XML files
         uses: actions/upload-artifact@v3
         with:
-          name: processed-xml-files
+          name: processed-xml-files-${{ github.event.inputs.environment }}
           path: ./CompileFiles
       
       - name: Download processed XML files
