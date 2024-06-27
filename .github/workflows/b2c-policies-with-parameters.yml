@@ -48,6 +48,13 @@ jobs:
         timeout-minutes: 30
         continue-on-error: true
 
+  upload-policy:
+    needs: wait-for-approval
+    runs-on: ubuntu-latest
+    if: ${{ github.event.client_payload.environment == 'production' || github.event.client_payload.environment == 'test' }}
+    steps:
+      - uses: actions/checkout@v2
+
       - name: 'Upload b2c Test Policy'
         uses: azure-ad-b2c/deploy-trustframework-policy@v3
         with:
