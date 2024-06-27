@@ -20,6 +20,7 @@ env:
   clientId: "${{ secrets.AZURE_CLIENT_ID }}"
   clientSecret: "${{ secrets.AZURE_CLIENT_SECRET }}"
   tenant: "${{ secrets.AZURE_TENANT_ID }}"
+  environment: ${{ github.event.inputs.environment }}
   
 jobs:
   build-and-deploy:
@@ -35,26 +36,6 @@ jobs:
       - name: Process XML files
         run: pwsh ./process_xml.ps1 -environment ${{ github.event.inputs.environment }} -jsonConfigPath ./Config/parameters.json -inputFolder ./Policies -outputFolder ./ProcessedPolicies
 
-      - name: Request manual approval
-        run: |
-          echo "Please trigger the 'Request Approval' workflow for environment '${{ github.event.inputs.environment }}' and then approve it to proceed."
-
-  wait-for-approval:
-    needs: build-and-deploy
-    runs-on: ubuntu-latest
-    steps:
-      - name: Wait for manual approval
-        run: echo "Waiting for manual approval..."
-        timeout-minutes: 60
-        continue-on-error: true
-
-  upload-policy:
-    needs: wait-for-approval
-    runs-on: ubuntu-latest
-    if: ${{ github.event.client_payload.environment == 'production' || github.event.client_payload.environment == 'test' }}
-    steps:
-      - uses: actions/checkout@v2
-
       - name: 'Upload b2c Test Policy'
         uses: azure-ad-b2c/deploy-trustframework-policy@v3
         with:
@@ -62,4 +43,4 @@ jobs:
           files: "B2C_1A_BASIC_A_BASE_MEDIASET_TEST_PUBLISH_3.xml"
           tenant: "${{ secrets.AZURE_TENANT_ID }}"
           clientId: "${{ secrets.AZURE_CLIENT_ID }}"
-          clientSecret: "${{ secrets.AZURE_CLIENT_SECRET }}"
+          clientSecret: "${{ secrets.AZURE_CLIENT_SECRET }}"   
