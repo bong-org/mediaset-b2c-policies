@@ -23,7 +23,7 @@ env:
   environment: ${{ github.event.inputs.environment }}
   
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -35,6 +35,14 @@ jobs:
 
       - name: Process XML files
         run: pwsh ./process_xml.ps1 -environment ${{ github.event.inputs.environment }} -jsonConfigPath ./Config/parameters.json -inputFolder ./Policies -outputFolder ./ProcessedPolicies
+
+
+
+  deploy:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
 
       - name: 'Upload b2c Test Policy'
         uses: azure-ad-b2c/deploy-trustframework-policy@v3
