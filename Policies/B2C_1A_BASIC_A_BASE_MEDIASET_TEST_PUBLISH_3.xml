@@ -15,7 +15,7 @@
            are modelled in the policy. A policy could be modified to add more restrictions, or use another 
            claims provider for credential storage which will have its own restrictions. -->
       <!-- SECTION I: Claims required for user journeys to work properly -->
-      <ClaimType Id={{ IdSocial }}>
+      <ClaimType Id="{{ IdSocial }}">
         <DisplayName>Username</DisplayName>
         <DataType>string</DataType>
         <UserHelpText />
