@@ -41,6 +41,12 @@ jobs:
         with:
           name: processed-xml-files
           path: ./CompileFiles
+      
+      - name: Download processed XML files
+        uses: actions/download-artifact@v3
+        with:
+          name: processed-xml-files
+          path: ./DownloadedFiles
 
   deploy:
     needs: [build]
