@@ -45,7 +45,7 @@ jobs:
     steps:
       - name: Wait for manual approval
         run: echo "Waiting for manual approval..."
-        timeout-minutes: 30
+        timeout-minutes: 60
         continue-on-error: true
 
   upload-policy:
