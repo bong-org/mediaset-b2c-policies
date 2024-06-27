@@ -47,6 +47,9 @@ jobs:
         with:
           name: processed-xml-files
           path: ./DownloadedFiles
+          
+      - name: Test artifact download
+        run: ls -R
 
   deploy:
     needs: [build]
