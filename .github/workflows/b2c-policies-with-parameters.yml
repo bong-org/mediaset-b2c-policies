@@ -36,7 +36,11 @@ jobs:
       - name: Process XML files
         run: pwsh ./process_xml.ps1 -environment ${{ github.event.inputs.environment }} -jsonConfigPath ./Config/parameters.json -inputFolder ./Policies -outputFolder ./CompileFiles
 
-
+      - name: Upload processed XML files
+        uses: actions/upload-artifact@v3
+        with:
+          name: processed-xml-files
+          path: ./CompileFiles
 
   deploy:
     needs: [build]
