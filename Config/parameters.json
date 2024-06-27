@@ -1,5 +1,5 @@
 {
-  "prod": {
+  "production": {
     "ENVIRONMENT": "Production",
     "TENANTID": "b2ccluaitlab.onmicrosoft.com",
     "Operation": "Read"

@@ -9,7 +9,7 @@ on:
         options:
           - dev
           - test
-          - prod
+          - production
 
 permissions:
   id-token: write
