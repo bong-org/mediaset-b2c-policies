@@ -1,0 +1,52 @@
+name: Azure Build B2C Policies 
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment'
+        type: choice
+        options:
+          - dev
+          - test
+          - production
+
+permissions:
+  id-token: write
+  contents: read
+  pull-requests: write
+
+env:
+  clientId: "${{ secrets.AZURE_CLIENT_ID }}"
+  clientSecret: "${{ secrets.AZURE_CLIENT_SECRET }}"
+  tenant: "${{ secrets.AZURE_TENANT_ID }}"
+  environment: ${{ github.event.inputs.environment }}
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install PowerShell
+        run:  |
+          sudo apt-get update
+          sudo apt-get install -y powershell
+
+      - name: Process XML files
+        run: pwsh ./process_xml.ps1 -environment ${{ github.event.inputs.environment }} -jsonConfigPath ./Config/parameters.json -inputFolder ./Policies -outputFolder ./CompileFiles
+
+      - name: Upload processed XML files
+        uses: actions/upload-artifact@v3
+        with:
+          name: processed-xml-files-${{ github.event.inputs.environment }}
+          path: ./CompileFiles
+      
+      - name: Download processed XML files
+        uses: actions/download-artifact@v3
+        with:
+          name: processed-xml-files-${{ github.event.inputs.environment }}
+          path: ./DownloadedFiles
+
+      - name: Test artifact download
+        run: ls -R
