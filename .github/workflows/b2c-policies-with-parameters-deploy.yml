@@ -1,0 +1,53 @@
+name: Azure Buil and Deploy B2C Policies 
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment'
+        type: choice
+        options:
+          - dev
+          - test
+          - production
+
+permissions:
+  id-token: write
+  contents: read
+  pull-requests: write
+
+env:
+  clientId: "${{ secrets.AZURE_CLIENT_ID }}"
+  clientSecret: "${{ secrets.AZURE_CLIENT_SECRET }}"
+  tenant: "${{ secrets.AZURE_TENANT_ID }}"
+  environment: ${{ github.event.inputs.environment }}
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install PowerShell
+        run:  |
+          sudo apt-get update
+          sudo apt-get install -y powershell
+
+      - name: Process XML files
+        run: pwsh ./process_xml.ps1 -environment ${{ github.event.inputs.environment }} -jsonConfigPath ./Config/parameters.json -inputFolder ./Policies -outputFolder ./CompileFiles
+
+  deploy:
+    needs: [build]
+    runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.environment }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: 'Upload b2c Test Policy'
+        uses: azure-ad-b2c/deploy-trustframework-policy@v3
+        with:
+          folder: "./ProcessedPolicies"
+          files: "B2C_1A_BASIC_A_BASE_MEDIASET_TEST_PUBLISH_3.xml"
+          tenant: "${{ secrets.AZURE_TENANT_ID }}"
+          clientId: "${{ secrets.AZURE_CLIENT_ID }}"
+          clientSecret: "${{ secrets.AZURE_CLIENT_SECRET }}"   
