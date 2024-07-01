@@ -27,7 +27,7 @@
         "Project": "_projectx" 
     },
 
-    "prod": {
+    "production": {
         "Tenant": "Insert Tenant",
         "IdentityExperienceFrameworkAppId": "Identity ex fra",
         "ProxyIdentityExperienceFrameworkAppId": "proxy ex fra",
