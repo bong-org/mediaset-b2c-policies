@@ -1,4 +1,4 @@
-name: Azure Build B2C Policies 
+name: Azure Deploy B2C Policies 
 
 on:
   workflow_dispatch:
