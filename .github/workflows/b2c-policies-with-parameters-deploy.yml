@@ -41,7 +41,7 @@ jobs:
         uses: azure-ad-b2c/deploy-trustframework-policy@v3
         with:
           folder: "./ProcessedPolicies"
-          files: "B2C_1A_BASIC_A_BASE_MEDIASET_TEST_PUBLISH_3.xml"
+          files: "B2C_1A_MEDIASET_TRUSTFRAMEWORKBASE.xml, B2C_1A_MEDIASET_TRUSTFRAMEWORKLOCALIZATION.xml, B2C_1A_MEDIASET_TRUSTFRAMEWORKEXTENSIONS.xml, B2C_1A_MEDIASET_SIGNIN.xml, B2C_1A_MEDIASET_SIGNUP.xml, B2C_1A_MEDIASET_PASSWORDRESET.xml" #the order in which files are deployed is relative to the order entered in this field 
           tenant: "${{ secrets.AZURE_TENANT_ID }}"
           clientId: "${{ secrets.AZURE_CLIENT_ID }}"
           clientSecret: "${{ secrets.AZURE_CLIENT_SECRET }}"   
